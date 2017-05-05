@@ -24,7 +24,7 @@
 % ExperimentalDataFile: Normalzied conductance experimental data points as
 %   a two column txt file in ASCII.
 %
-% Temperatura: Temperature for the fit in K
+% Temperatura: Temperature for the calculation in K
 %
 % Energia: Column vector with the values of the energy in meV to perfom the
 %   calculation
@@ -35,8 +35,7 @@
 %
 % OUTPUTS:
 % -----------------------------------------------------------------------
-% NormalizedBCSDOS.txt: fichero ASCII de dos columnas con el resultado del
-% cálculo
+% SaveFile: two column ASCII file with the result of the calculation.
 % -----------------------------------------------------------------------
 
 % CUSTOM OPTIONS:
