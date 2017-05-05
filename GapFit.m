@@ -36,7 +36,7 @@
 % OUTPUTS:
 % -----------------------------------------------------------------------
 % NormalizedBCSDOS.txt: fichero ASCII de dos columnas con el resultado del
-% cálculo
+% cÃ¡lculo
 % -----------------------------------------------------------------------
 
 % CUSTOM OPTIONS:
@@ -45,7 +45,7 @@
     TamahoFuenteEjes    = 14;
     TamahoFuenteTitulos = 16;
     TamanhoLinea        = 2;
-    TamanhoPuntos        = 10;
+    TamanhoPuntos       = 10;
 % -----------------------------------------------------------------------
 
 % -----------------------------------------------------------------------
@@ -54,13 +54,14 @@
     Temperatura = 0.1;              % K
     Energia     = (-5:0.005:5)';    % meV
     Delta       = (0:0.02:1.5);     % meV
-    GapDistributionFile = 'GapDistribution.txt';
+    GapDistributionFile  = 'GapDistribution.txt';
     ExperimentalDataFile = 'ExperimentalData.txt';
+    SaveFile             = 'NormalizedBCSDOS.txt';
 % -----------------------------------------------------------------------
 
 % Constants:
 % -----------------------------------------------------------------------
-    kB = 8.617e-2; % Boltzmann constant in meV/K
+    kB   = 8.617e-2; % Boltzmann constant in meV/K
     Beta = 1/(kB*Temperatura);
 % -----------------------------------------------------------------------
 % 
@@ -80,12 +81,12 @@
 
 % Control
 % -----------------------------------------------------------------------
-    PasoVoltaje = abs(Energia(2)-Energia(1));
+    PasoVoltaje      = abs(Energia(2)-Energia(1));
     PasoDistribucion = abs(Delta(2)-Delta(1));
 
     if PasoVoltaje > PasoDistribucion
         fprintf('\n');
-        fprintf('El paso en energia es mayor que el paso de la distribución \n');
+        fprintf('El paso en energia es mayor que el paso de la distribuciÃ³n \n');
     end
 % -----------------------------------------------------------------------
 
@@ -125,7 +126,7 @@
 
 
 % Calculation of the BCS DOS using the gap distribution used in 
-% P. Martínez-Samper et al., Phys. C 385, 233-243 (2003).
+% P. MartÃ­nez-Samper et al., Phys. C 385, 233-243 (2003).
 % http://www.sciencedirect.com/science/article/pii/S0921453402022967
 % -----------------------------------------------------------------------
     DOS = Energia;
@@ -153,7 +154,7 @@
 % Convolution of the calculated DOS and the derivative of Fermi function
 % -----------------------------------------------------------------------
     Conductancia = conv(dFermiDist,DOS,'same');
-    ConductanciaNormalizada = Conductancia/200; % ¡¡MAGIC NUMBER!!    
+    ConductanciaNormalizada = Conductancia/200; % Â¡Â¡MAGIC NUMBER!!    
 % -----------------------------------------------------------------------
 
 % Plotting the result
@@ -232,5 +233,5 @@ Fig1 = figure(567);
    
 % Saving data
 % -----------------------------------------------------------------------
-    dlmwrite('NormalizedBCSDOS.txt', [Energia,Conductancia],...
+    dlmwrite(SaveFile, [Energia,Conductancia],...
         'delimiter','\t','newline','pc');
